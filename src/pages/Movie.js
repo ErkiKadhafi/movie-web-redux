@@ -234,7 +234,11 @@ const Movie = () => {
                                         <div className="block relative">
                                             <img
                                                 alt="profil"
-                                                src="/images/avatar_placeholder.png"
+                                                src={
+                                                    user.profile_path
+                                                        ? `https://image.tmdb.org/t/p/w500/${user.profile_path}`
+                                                        : "/images/avatar_placeholder.png"
+                                                }
                                                 className="object-cover rounded-full h-12 w-12 "
                                             />
                                         </div>
@@ -248,18 +252,24 @@ const Movie = () => {
                                     <div className="space-y-1 ">
                                         <div className="flex space-x-1 justify-between">
                                             <p className="text-gray-gray/50">
-                                                Movie rating
+                                                <span className="hidden md:inline">
+                                                    Movie
+                                                </span>{" "}
+                                                Rating
                                             </p>
                                             <p>
                                                 {" "}
                                                 {formik.touched.rating &&
                                                     formik.errors.rating && (
-                                                        <p className="text-red-400">
-                                                            {
-                                                                formik.errors
-                                                                    .rating
-                                                            }
-                                                        </p>
+                                                        <>
+                                                            <p className="text-red-400 hidden md:block">
+                                                                {
+                                                                    formik
+                                                                        .errors
+                                                                        .rating
+                                                                }
+                                                            </p>
+                                                        </>
                                                     )}
                                             </p>
                                         </div>
@@ -292,7 +302,7 @@ const Movie = () => {
                                                     }
                                                     onBlur={formik.handleBlur}
                                                     value={formik.values.rating}
-                                                    className="border w-44 border-gray-gray/700 placeholder-gray-gray/600 rounded px-1 bg-black-black/50 text-gray-gray/300 text-base focus:outline-none focus:ring-2 focus:ring-star focus:border-transparent"
+                                                    className="border w-24 md:w-44 border-gray-gray/700 placeholder-gray-gray/600 rounded px-1 bg-black-black/50 text-gray-gray/300 text-base focus:outline-none focus:ring-2 focus:ring-star focus:border-transparent"
                                                 />
                                             </div>
                                         </div>
@@ -372,7 +382,13 @@ const Movie = () => {
                                                             <div className="block relative">
                                                                 <img
                                                                     alt="profil"
-                                                                    src="/images/avatar_placeholder.png"
+                                                                    src={
+                                                                        review
+                                                                            .reviewer
+                                                                            .profile_path
+                                                                            ? `https://image.tmdb.org/t/p/w500/${review.reviewer.profile_path}`
+                                                                            : "/images/avatar_placeholder.png"
+                                                                    }
                                                                     className="object-cover rounded-full h-12 w-12 "
                                                                 />
                                                             </div>
