@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const baseUrl = "http://notflixtv.herokuapp.com/api/v1";
+const baseUrl = "https://notflixtv.herokuapp.com/api/v1";
 
 const userState = JSON.parse(localStorage.getItem("movie-web"))
     ? JSON.parse(localStorage.getItem("movie-web"))

@@ -3,7 +3,7 @@ import { data } from "autoprefixer";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const url = "http://notflixtv.herokuapp.com/api/v1";
+const url = "https://notflixtv.herokuapp.com/api/v1";
 
 const initialState = {
     allMovies: [],
