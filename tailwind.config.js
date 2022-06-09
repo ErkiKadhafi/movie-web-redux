@@ -16,6 +16,7 @@ module.exports = {
             colors: {
                 black: {
                     "black/10": "rgba(0,0,0,0.1)",
+                    "black/30": "rgba(0,0,0,0.3)",
                     "black/50": "rgba(0,0,0,0.5)",
                     "black/100": "rgba(0,0,0)",
                 },
@@ -40,12 +41,16 @@ module.exports = {
                 warning: {
                     500: "#FFAD49",
                 },
+                star: "#FFAD49",
                 blurBg: "#20283E",
             },
             backgroundImage: {
                 backgroundMain: "url('/public/images/Background.png')",
             },
         },
+    },
+    variants: {
+        fill: ["hover", "focus"], // this line does the trick
     },
     plugins: [],
 };

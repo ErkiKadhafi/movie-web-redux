@@ -10,6 +10,16 @@
     margin-left: auto;
     margin-right: auto;
 }
+.header-block::before {
+    background: #767e94;
+    border-radius: 4px;
+    content: "";
+    margin-left: -0.75rem;
+    top: 0;
+    position: absolute;
+    height: 100%;
+    width: 4px;
+}
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -24,4 +34,15 @@ select:-webkit-autofill:focus {
     -webkit-text-fill-color: #8e95a9;
     /* -webkit-box-shadow: 0 0 0px 1000px #000 inset; */
     transition: background-color 5000s ease-in-out 0s;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
 }
