@@ -71,7 +71,7 @@ const Movie = () => {
             <section className="pt-20 pb-10">
                 <div className="layout relative">
                     <div
-                        className="h-96 lg:h-480px w-full"
+                        className="h-96 lg:h-480px w-full "
                         style={{ borderRadius: "40px" }}
                     >
                         <iframe
@@ -83,7 +83,7 @@ const Movie = () => {
                             allowFullScreen
                         ></iframe>
                     </div>
-                    <div className="absolute bottom-0 transform translate-y-1/2 bg-blurBg/[.9] rounded-3xl p-6 w-full lg:p-10 lg:w-560px lg:left-14">
+                    <div className=" pointer-events-none absolute bottom-0 transform translate-y-1/2 bg-blurBg/[.9] rounded-3xl p-6 w-full lg:p-10 lg:w-560px lg:left-14">
                         <div className="space-x-3 text-primary-primary/200 mb-2">
                             <span>MovieApp</span>
                             <span>/</span>
@@ -102,11 +102,15 @@ const Movie = () => {
             <section className="py-16 lg:pt-20 lg:pb-16 lg:px-14">
                 <div className="layout flex flex-col-reverse md:grid grid-cols-2 gap-10">
                     <div className="md:flex justify-center items-center">
-                        <img
-                            className="h-560px rounded-3xl"
-                            src={`https://image.tmdb.org/t/p/w500${singleMovie.poster}`}
-                            alt="poster 2"
-                        />
+                        {isLoadingSingleMovie ? (
+                            <div className="h-560px w-96 rounded-3xl mx-auto bg-gray-gray/300 animate-pulse" />
+                        ) : (
+                            <img
+                                className="h-560px w-96 rounded-3xl mx-auto"
+                                src={`https://image.tmdb.org/t/p/w500${singleMovie.poster}`}
+                                alt="poster 2"
+                            />
+                        )}
                     </div>
                     <div className="space-y-6">
                         <div className="relative py-1 flex items-center ">
@@ -116,11 +120,16 @@ const Movie = () => {
                                     : singleMovie.title}
                             </h2>
                         </div>
-                        <h3 className="text-lg text-gray-gray/300">
-                            {isLoadingSingleMovie
-                                ? "Movie Synopsis"
-                                : singleMovie.synopsis}
-                        </h3>
+                        {isLoadingSingleMovie ? (
+                            <h3 className="text-lg bg-gray-gray/300 text-gray-gray/300 animate-pulse">
+                                Lorem Ipsum is simply dummy text of the printing
+                            </h3>
+                        ) : (
+                            <h3 className="text-lg text-gray-gray/300">
+                                {singleMovie.synopsis}
+                            </h3>
+                        )}
+
                         {/* ======== ratings ======== */}
                         <div className="bg-black-black/50 flex items-center space-x-2 p-2 w-min rounded-lg">
                             <svg
@@ -144,6 +153,7 @@ const Movie = () => {
                                     : singleMovie.rating}
                             </span>
                         </div>
+                        {/* ========genres ======== */}
                         <div className="space-y-2">
                             <h4 className="text-lg text-gray-gray/400">
                                 Genres
@@ -156,6 +166,15 @@ const Movie = () => {
                                             className="px-4 py-2  text-sm text-center rounded-full text-white  bg-indigo-500 "
                                         >
                                             {genre}
+                                        </span>
+                                    ))}
+                                {isLoadingSingleMovie &&
+                                    [...Array(5)].map((genre, index) => (
+                                        <span
+                                            key={index}
+                                            className="px-4 py-2  text-sm text-center rounded-full text-gray-gray/300 bg-gray-gray/300 animate-pulse"
+                                        >
+                                            placeholder
                                         </span>
                                     ))}
                             </div>
